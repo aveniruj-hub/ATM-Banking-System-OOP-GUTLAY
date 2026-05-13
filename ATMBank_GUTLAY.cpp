@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-// ?? CLASS: Account
+
 class Account {
 private:
     int id;
@@ -49,12 +49,12 @@ public:
         cout << id << " " << name << " " << pin << " " << balance << endl;
     }
 
-    // for saving
+    
     int getId() { return id; }
     double getBalance() { return balance; }
 };
 
-// ?? LOAD ACCOUNTS FROM FILE
+
 vector<Account> loadAccounts() {
     vector<Account> accounts;
     ifstream file("accounts.txt");
@@ -71,7 +71,7 @@ vector<Account> loadAccounts() {
     return accounts;
 }
 
-// ?? SAVE ACCOUNTS TO FILE
+
 void saveAccounts(vector<Account>& accounts) {
     ofstream file("accounts.txt");
 
@@ -85,7 +85,7 @@ void saveAccounts(vector<Account>& accounts) {
     file.close();
 }
 
-// ?? MAIN SYSTEM
+
 int main() {
     vector<Account> accounts = loadAccounts();
 
@@ -98,7 +98,7 @@ int main() {
 
     Account* current = nullptr;
 
-    // ?? LOGIN
+   
     for (auto& acc : accounts) {
         if (acc.getName() == name && acc.getPin() == pin) {
             current = &acc;
@@ -156,8 +156,13 @@ int main() {
             saveAccounts(accounts);
             break;
         }
-
+        
         case 5:
+            listAccounts(accounts);
+            
+            break;
+
+        case 6:
             cout << "Thank you for using ATM!\n";
             break;
 
